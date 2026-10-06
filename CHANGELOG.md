@@ -199,11 +199,21 @@ frozen.
 - **Native tool search keeps working after its first round (Anthropic).** The search's result was
   left out when the conversation was sent back, so the API rejected every request from the second
   one after a search onward and the workstream could not continue. The result is now passed back
-  unchanged, and workstreams already stuck this way continue.
+  unchanged, and workstreams already stuck this way continue. A tool that a search found but a
+  later request no longer offers, for example because its MCP server is offline, is offered as no
+  longer available, since the API rejects a request whose history names a tool it does not have.
 - **A saved workstream with no messages keeps its settings.** Opening one (from a pane, and now
   also `--resume` and `/resume`) applied the constructor's defaults instead of its saved model,
   sampling, instructions and skill, and the next settings change wrote those defaults over the
   saved ones. It now opens with its saved settings.
+- **The model keeps its own searches in its history (OpenAI).** Replayed history left out the web
+  searches and tool searches the model ran itself, so it searched again for tools it had already
+  found. Both now replay where they ran, and a call to a tool that a search loaded carries the
+  namespace the API requires for it. A replayed web search shows the model its query or the page
+  it opened, not the results, which the API does not take back. Compatible endpoints and xAI
+  replay as before. A workstream that searched misses the prompt cache once, on its first request
+  after the update. One that searched again for tools it had already found resends each of those
+  searches, with the definitions it loaded, until it compacts.
 - **A storage error while opening a workstream no longer replaces its saved settings.** Building the
   session saves its defaults when no settings are saved, and a read that failed counted as none
   saved, so one failed read could overwrite the saved model, sampling, instructions and skill. That
