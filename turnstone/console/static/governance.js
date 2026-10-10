@@ -2704,7 +2704,7 @@ function _renderGovUsage(data) {
       const completionPct =
         maxVal > 0 ? Math.round((completionVal / maxVal) * 100) : 0;
       const label = item.key || "\u2014";
-      // Stacked segments: prompt (accent) then completion (darker accent). A segment is
+      // Stacked segments: prompt (accent) then completion (neutral ink). A segment is
       // skipped when empty, except a zero-total row keeps a minimal prompt
       // sliver so the row still reads as present.
       let fill = "";

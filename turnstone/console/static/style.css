@@ -2157,20 +2157,20 @@ h3.skill-spec-heading {
   border-radius: 2px;
   overflow: hidden;
   display: flex;
+  gap: 2px;
 }
 .usage-bar-fill {
   height: 100%;
   min-width: 2px;
   transition: width 0.3s ease;
 }
-/* Stacked prompt/completion segments — prompt keeps the accent color, completion a darker accent */
+/* Stacked prompt/completion segments: prompt keeps the accent color, completion the neutral ink */
 .usage-bar-prompt {
   background: var(--accent);
   box-shadow: 0 0 6px var(--accent-glow);
 }
 .usage-bar-completion {
-  background: var(--brand-mark-end);
-  box-shadow: 0 0 6px var(--accent-glow);
+  background: var(--ink-4);
 }
 .usage-legend {
   display: flex;
@@ -2198,7 +2198,7 @@ h3.skill-spec-heading {
   background: var(--accent);
 }
 .usage-legend-swatch-completion {
-  background: var(--brand-mark-end);
+  background: var(--ink-4);
 }
 .usage-bar-value {
   font-size: 11px;
