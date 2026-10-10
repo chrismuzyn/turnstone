@@ -2725,7 +2725,11 @@ function _renderGovUsage(data) {
         '<span class="usage-bar-label">' +
         escapeHtml(label) +
         "</span>" +
-        '<div class="usage-bar-track">' +
+        '<div class="usage-bar-track" role="img" title="prompt ' +
+        formatTokens(promptVal) +
+        ", completion " +
+        formatTokens(completionVal) +
+        '">' +
         fill +
         "</div>" +
         '<span class="usage-bar-value">' +
